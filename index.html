@@ -1,15 +1,90 @@
 <style>
-  :root { --background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%) !important; --bg-color: transparent !important; } 
-  body { background: var(--background) !important; background-attachment: fixed !important; background-size: cover !important; min-height: 100vh !important; } 
-  .main-content, .container, #app, main, [class*="min-h-screen"], [class*="bg-"] { background: transparent !important; background-color: transparent !important; } 
-  .category-title, h2.text-xl, .group-title, h2 { color: #818cf8 !important; font-weight: 600 !important; border-left: 4px solid #818cf8 !important; padding-left: 10px !important; margin-top: 2rem !important; margin-bottom: 1rem !important; } 
-  h1.text-4xl, .site-title, h1 { background: linear-gradient(to right, #ffffff, #94a3b8) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; font-weight: 700 !important; } 
-  .card, [class*="card"], .grid > a, .url-card, [class*="SiteCard"] { position: relative !important; background: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 14px !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; box-shadow: none !important; } 
-  .card:hover, [class*="card"]:hover, .grid > a:hover, .url-card:hover, [class*="SiteCard"]:hover { transform: translateY(-4px) !important; background: rgba(255, 255, 255, 0.07) !important; border-color: rgba(129, 140, 248, 0.4) !important; box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5) !important; } 
-  .card-title, .card h3, [class*="card"] h3, [class*="card"] .text-lg, .url-card h3 { color: #f8fafc !important; font-weight: 500 !important; } 
-  .card-desc, .card p, [class*="card"] p, [class*="card"] .text-sm, .url-card p { color: #94a3b8 !important; } 
-  .card img, [class*="card"] img, .url-card img { border-radius: 8px !important; background: rgba(255, 255, 255, 0.05) !important; padding: 2px !important; transition: transform 0.3s ease !important; } 
-  .card:hover img, [class*="card"]:hover img, .url-card:hover img { transform: scale(1.05) !important; } 
-  input[type="text"], .search-box input, input { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 9999px !important; color: #ffffff !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; transition: all 0.3s ease !important; } 
-  input[type="text"]:focus, .search-box input:focus, input:focus { border-color: #818cf8 !important; background: rgba(255, 255, 255, 0.08) !important; box-shadow: 0 0 15px rgba(129, 140, 248, 0.15) !important; }
+  /* ==========================================================================
+     1. 全局唯美毛玻璃背景
+     ========================================================================== */
+  :root {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+  }
+  
+  html, body {
+    background: var(--bg-gradient) !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    min-height: 100vh !important;
+    color: #f8fafc !important;
+  }
+
+  /* 清除包裹层自带的黑白背景，只留下我们自己的渐变底色 */
+  div#root, div#__next, .min-h-screen, main {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  /* ==========================================================================
+     2. 导航卡片现代毛玻璃微调
+     ========================================================================== */
+  /* 精准锁定卡片，只改变它的背景和边框，不破坏内部组件 */
+  .grid a, .card, [class*="card_"], [class*="Card_"] {
+    position: relative !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    box-shadow: none !important;
+  }
+
+  /* 悬浮交互：轻轻上浮 + 靛蓝呼吸灯边缘 */
+  .grid a:hover, .card:hover, [class*="card_"]:hover, [class*="Card_"]:hover {
+    transform: translateY(-4px) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(129, 140, 248, 0.4) !important;
+    box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* ==========================================================================
+     3. 文字与标题颜色守护
+     ========================================================================== */
+  /* 确保主标题呈现高级渐变色 */
+  h1 {
+    background: linear-gradient(to right, #ffffff, #94a3b8) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 700 !important;
+  }
+
+  /* 分组分类标题：优雅靛蓝加左侧质感线条 */
+  h2, .category-title {
+    color: #818cf8 !important;
+    font-weight: 600 !important;
+    border-left: 4px solid #818cf8 !important;
+    padding-left: 10px !important;
+  }
+
+  /* 强制让卡片内的标题和描述显色，防止被误伤隐藏 */
+  h3, .card-title, [class*="title_"] {
+    color: #f8fafc !important;
+  }
+  p, .card-desc, [class*="desc_"] {
+    color: #94a3b8 !important;
+  }
+
+  /* ==========================================================================
+     4. 搜索框与输入框美化
+     ========================================================================== */
+  input[type="text"], input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 9999px !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    transition: all 0.3s ease !important;
+  }
+  input[type="text"]:focus, input:focus {
+    border-color: #818cf8 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.15) !important;
+  }
 </style>
