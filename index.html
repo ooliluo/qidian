@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#1976d2" />
-    <meta name="description" content="个人导航站，整理和分享您喜爱的网站链接" />
-    <link rel="icon" href="/vite.svg" />
-    <title>导航站</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<style>
+  :root { --background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%) !important; --bg-color: transparent !important; } 
+  body { background: var(--background) !important; background-attachment: fixed !important; background-size: cover !important; min-height: 100vh !important; } 
+  .main-content, .container, #app, main, [class*="min-h-screen"], [class*="bg-"] { background: transparent !important; background-color: transparent !important; } 
+  .category-title, h2.text-xl, .group-title, h2 { color: #818cf8 !important; font-weight: 600 !important; border-left: 4px solid #818cf8 !important; padding-left: 10px !important; margin-top: 2rem !important; margin-bottom: 1rem !important; } 
+  h1.text-4xl, .site-title, h1 { background: linear-gradient(to right, #ffffff, #94a3b8) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; font-weight: 700 !important; } 
+  .card, [class*="card"], .grid > a, .url-card, [class*="SiteCard"] { position: relative !important; background: rgba(255, 255, 255, 0.03) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 14px !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; box-shadow: none !important; } 
+  .card:hover, [class*="card"]:hover, .grid > a:hover, .url-card:hover, [class*="SiteCard"]:hover { transform: translateY(-4px) !important; background: rgba(255, 255, 255, 0.07) !important; border-color: rgba(129, 140, 248, 0.4) !important; box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5) !important; } 
+  .card-title, .card h3, [class*="card"] h3, [class*="card"] .text-lg, .url-card h3 { color: #f8fafc !important; font-weight: 500 !important; } 
+  .card-desc, .card p, [class*="card"] p, [class*="card"] .text-sm, .url-card p { color: #94a3b8 !important; } 
+  .card img, [class*="card"] img, .url-card img { border-radius: 8px !important; background: rgba(255, 255, 255, 0.05) !important; padding: 2px !important; transition: transform 0.3s ease !important; } 
+  .card:hover img, [class*="card"]:hover img, .url-card:hover img { transform: scale(1.05) !important; } 
+  input[type="text"], .search-box input, input { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 9999px !important; color: #ffffff !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; transition: all 0.3s ease !important; } 
+  input[type="text"]:focus, .search-box input:focus, input:focus { border-color: #818cf8 !important; background: rgba(255, 255, 255, 0.08) !important; box-shadow: 0 0 15px rgba(129, 140, 248, 0.15) !important; }
+</style>
